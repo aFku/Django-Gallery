@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+	<head>
+		<title>Gallery Site</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	</head>
+	<body>
+		<div class="header">
+			
+		</div>
+		<div class="main">
+			<div class="content-container">
+				{% block gallery %}
+				{% endblock %}
+				<div class="side-nav-container">
+					<div class="side-nav">
+						<ul>
+							<li>
+								<a id="first-child">Navigation</a>
+							</li>
+							<li>
+								<a href="/">Home</a>
+							</li>
+							<li>
+								<a href="/gallery/1">Gallery 1</a>
+							</li>
+							<li>
+								<a href="/gallery/2">Gallery 2</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

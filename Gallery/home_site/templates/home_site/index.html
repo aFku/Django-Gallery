@@ -1,0 +1,15 @@
+{% extends 'home_site/base.html' %}
+
+{% block gallery %}
+	<div class="gallery-container">
+		{% for images in images_template %}
+			<div class="gallery-row" id="{{ forloop.counter }}">
+				{% for image in images %}
+					<div class="gallery-column">
+						<img src="{{ image.image_path.url }}">
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}
