@@ -1,0 +1,41 @@
+div.flex{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 90vh;
+}
+
+a.reference{
+	width: 15%;
+	height: 40%;
+	border: solid 1px black;
+	margin: 0 5%;
+	display: block;
+	text-decoration: none;
+	color: black;
+}
+
+a.reference:hover{
+	background-color: #7D7D7D;
+	transition-duration: 1s;
+	cursor: pointer;
+}
+
+
+div.line{
+	border-top: solid 1px black;
+}
+
+img {
+	max-width: 70%;
+	margin: 5% auto;
+	display: block;
+	margin-bottom: 20%;
+}
+
+div.label{
+	text-align: center;
+	margin: auto;
+	font-size: 200%;
+}
+

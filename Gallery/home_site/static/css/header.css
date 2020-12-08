@@ -1,0 +1,109 @@
+body, header, h1, h2, ul, li, div, p, a{
+	margin: 0;
+	padding: 0;
+}
+
+@font-face {
+  font-family: Pacifico;
+  src: url(../fonts/Pacifico-Regular.ttf);
+}
+
+header{
+	position: fixed;
+	width: 100%;
+	background-color: #5CC846;
+	height: 100px;
+	max-height: 100px;
+	min-width: 820px;
+}
+
+header div{
+	display: inline-block;
+}
+
+header div.title-header{
+	float: left;
+	width: 30%;
+	height: 100%;
+}
+
+header div.title-header img{
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+
+header div.nav-bar{
+	float: right;
+}
+
+header div.title-header h1{
+	text-align: center;
+	line-height: 60%;
+	display: inline-block;
+	margin: 25px 5px;
+	float: left;
+}
+
+header div.title-header a{
+	text-decoration: none;
+	color: #4F21CE;
+}
+
+header div.title-header h1 span{
+	font-family: Pacifico;
+	font-size: 24px;
+	word-spacing: 10px;
+}
+
+header div.title-header h1 a{
+	font-size: 58px;
+}
+
+header div.nav-bar ul{
+	list-style-type: none;
+	white-space: nowrap;
+	display: flex;
+	border: 2px solid #2F2F2F;
+	background-color: #2F2F2F;
+	overflow: hidden;
+}
+
+header div.nav-bar li{
+	display: inline-block;
+	height: 96px;
+	text-align: center;
+	box-sizing: border-box;
+	width: 25%;
+	border: 2px solid #2F2F2F;
+	border-radius: 10px;
+	background-color: #2F2F2F;
+}
+
+header div.nav-bar li:hover{
+	background-color: #4D4D4D;
+}
+
+header div.nav-bar li a{
+	text-decoration: none;
+	display: block;
+	color: white;
+	font-size: 20px;
+	padding: 1.75em 1em;
+}
+
+header div.title-header ul{
+	list-style-type: none;
+	white-space: nowrap;
+	display: flex;
+}
+
+header div.title-header li{
+	display: inline-block;
+	width: 100%;
+}
+
+header div.title-header li.logo{
+	width: 100px;
+	height: 100px;
+}

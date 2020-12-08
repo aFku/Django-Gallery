@@ -1,15 +1,75 @@
 {% extends 'home_site/base.html' %}
 
-{% block gallery %}
-	<div class="gallery-container">
-		{% for images in images_template %}
-			<div class="gallery-row" id="{{ forloop.counter }}">
-				{% for image in images %}
-					<div class="gallery-column">
-						<img src="{{ image.image_path.url }}">
-					</div>
-				{% endfor %}
+{% block content %}
+<div class="intro-container">
+		<article class="intro">
+			<h2>Welcom stranger</h2>
+			<a>This is also some text. This is also some text. This is also some text. This is also some text. This is also some text. This is also some text.Remove the "clear" class to see the effect. Duże znaczenie użytkowe ma uprawiana od setek lat i w wielu odmianach sagownica sagowa. Z rdzeni kłodzin pozyskuje się skrobię najpierw w postaci sagu surowego, które następnie wykorzystywane jest do wyrobu wielu produktów i potraw takich jak: papeda, mąka sagowa, sago perłowe, podpłomyki kerupuk. Pąki liściowe (tzw. kapusta palmowa) są wykwintnąEternit (z łacińskiego aeternum – wieczność, autor Ludwig Hatschek) – nazwa handlowa, która z czasem stała się nazwą potoczną materiałów budowlanych azbestowo-cementowych. Z eternitu wykonywano płyty pokryciowe – elewacyjne i dachowe – oraz rury. Jest to materiał ogniotrwały, odporny na warunki atmosferyczne oraz działanie wody i ścieków, a jednocześnie wytrzymały mechanicznie, nawet w wyrobach o ściankach niewielkiej grubości, przez co był również relatywnie lekki i dość tani. Stosowany od początku XX wieku.
+
+			</a>
+		</article>
+	</div>
+	<div class="big-hr">
+		<hr>
+	</div>
+	<main>
+		<section class="gallery-content">
+			<h2>
+				Latest pictures
+			</h2>
+			{% for image in images_paginator %}
+			<div class="image-content">
+				<img src="{{ image.image_path.url }}">
+				<div class="image-data">
+					<p class="image-title"><strong>Title: </strong>{{ image.title }}</p>
+					<p class="image-description"><strong>Description: </strong>{{ image.description }}</p>
+					<p class="image-date"><strong>Date: </strong>{{ image.date }}</p>
+					<p class="image-group"><strong>Group: </strong>{{ image.group }}</p>
+				</div>
+			</div>
+			<div class="small-hr">
+			    <hr>
 			</div>
 		{% endfor %}
-	</div>
-{% endblock %}
+		<!--- Paginator --->
+		<div class="paginator-contaier">
+			{% if images_paginator.has_previous %}
+				<a class="pagination-button" href="?page=1"><< First</a>
+			{% else %}
+				<a> </a>
+			{% endif %}
+			{% if images_paginator.has_previous %}
+				<a class="pagination-button" href="?page={{ images_paginator.previous_page_number }}">< Previous</a>
+			{% else %}
+				<a> </a>
+			{% endif %}
+			<a class="pagination-info">
+				{{ images_paginator.number }} of {{ images_paginator.paginator.num_pages }}
+			</a>
+			{% if images_paginator.has_next %}
+				<a class="pagination-button" href="?page={{ images_paginator.next_page_number }}">Next ></a>
+			{% else %}
+				<a> </a>
+			{% endif %}
+			{% if images_paginator.has_next %}
+				<a class="pagination-button" href="?page={{ images_paginator.paginator.num_pages }}">Last >></a>
+			{% else %}
+				<a> </a>
+			{% endif %}	
+		</div>
+		<!--- End of paginator --->
+		</section>
+		<section class="side-content">
+			<h2>Random picture</h2>
+			<div class="side-img">
+				<a href="/preview/{{ random_image.get_name }}"><img src="{{ random_image.image_path.url }}"></a>
+				<ul>
+					<li><strong>Title: </strong>{{ random_image.title }}</li>
+					<li><strong>Description: </strong>{{ random_image.description }}</li>
+					<li><strong>Date: </strong>{{ random_image.date}}</li>
+					<li><strong>Group: </strong>{{ random_image.group }}</li>
+				</ul>
+			</div>
+		</section>
+	</main>
+	{% endblock %}

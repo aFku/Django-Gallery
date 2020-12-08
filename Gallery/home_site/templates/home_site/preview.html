@@ -1,0 +1,39 @@
+{% extends 'home_site/base.html' %}
+
+{% block content %}
+<main class="preview">
+	<div class="image">
+		<img src="{{ image.image_path.url}}">
+	</div>
+	<div class="info">
+		<h1>{{ image.title }}</h1>
+		<ul>
+			<li>
+				<a class="spec-type"><strong>Description:</strong></a>
+				<a class="spec-content">{{ image.description }}</a>
+			</li>
+			<li>
+				<a class="spec-type"><strong>Date:</strong></a>
+				<a class="spec-content">{{ image.date }}</a>
+			</li>
+			<li>
+				<a class="spec-type"><strong>Group:</strong></a>
+				<a class="spec-content">{{ image.group}}</a>
+			</li>
+		</ul>
+
+	</div>
+</main>
+<section class="others">
+	<h1>
+		See also other pictures
+	</h1>
+	<ul>
+		{% for other in other_images %}
+		<li>
+			<a href="/preview/{{ other.0.get_name }}"><img src="{{ other.0.image_path.url }}"></a>
+		</li>
+		{% endfor %}
+	</ul>
+</section>
+{% endblock %}

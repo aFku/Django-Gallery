@@ -1,36 +1,38 @@
 {% load static %}
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Gallery Site</title>
-		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-	</head>
-	<body>
-		<div class="header">
-			
+<head>
+	<title>Amsterum - New Gallery</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/header.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/preview.css' %}">
+</head>
+<body>
+	<header>
+		<div class="title-header">
+			<ul>
+				<li class="logo">
+					<a href="/index.html"><img src="{% static 'resc/logo.png' %}" alt="Amsterum logo"></a>
+				</li>
+				<li class="title">
+					<h1>
+						<a href="index.html">Amsterum<br><span>Gallery for you</span></a>
+					</h1>
+				</li>
+			</ul>
 		</div>
-		<div class="main">
-			<div class="content-container">
-				{% block gallery %}
-				{% endblock %}
-				<div class="side-nav-container">
-					<div class="side-nav">
-						<ul>
-							<li>
-								<a id="first-child">Navigation</a>
-							</li>
-							<li>
-								<a href="/">Home</a>
-							</li>
-							<li>
-								<a href="/gallery/1">Gallery 1</a>
-							</li>
-							<li>
-								<a href="/gallery/2">Gallery 2</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+		<div class="nav-bar">
+			<ul>
+				<li class="header-nav-button" id="home"><a href="index.html">Home</a></li>
+				<li class="header-nav-button"><a href="">Gallery 1</a></li>
+				<li class="header-nav-button"><a href="">Gallery 2</a></li>
+				<li class="header-nav-button"><a href="">Gallery 3</a></li>
+			</ul>
 		</div>
-	</body>
+	</header>
+	{% block content %}
+	{% endblock %}
+	
+
+</body>
 </html>

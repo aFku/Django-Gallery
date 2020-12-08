@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amsterum - New Gallery</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/registry.css' %}">
+</head>
+<body>
+	<div class="flex">
+		<div class="reg-container">
+			<h3>Admin Register</h3>
+			<div class="utils">
+				<div class="table">
+					<table>
+					<form method="post" action="">
+			    	{% csrf_token %}
+			    	{{ form.non_field_errors }}
+			    	{% for field in form %}
+			    	<tr>
+				    		<th class="label"><label for="{{ field.id_for_label }}">{{ field.label }}:</label>
+				    		{% if field.errors %}
+				    		 	<ol>
+				    		 		{% for error in field.errors %}
+				    		 		<li class="error">{{ error }}</li>
+				    		 		{% endfor %}
+				    		 	</ol>
+				    		{% endif %}
+				    	</th>
+				    	<th>
+				    		{{ field }}
+				    	</th>
+				    </tr>
+			    	{% endfor %}
+			    	</table>
+			    	<div class="button">
+			    		<input type="submit" value="Create new user account" />
+			    	</div>
+					</form>
+					</table>
+				</div>
+				<div class="logo">
+					<img src="{% static 'resc/logo.png' %}" alt="Amsterum logo">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

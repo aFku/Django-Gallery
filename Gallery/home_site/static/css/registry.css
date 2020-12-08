@@ -1,0 +1,64 @@
+div.flex{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 90vh;
+}
+
+div.reg-container{
+	height: 30%;
+	width: 40%;
+	border: solid 1px black;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;	
+}
+
+th.label{
+	text-align: right;
+}
+
+div.button {
+	text-align: center;
+}
+
+div.table{
+	display: inline-block;
+}
+div.logo{
+	display: inline-block;
+}
+
+div.utils{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 95%
+}
+
+h3 {
+	text-align: center;
+	margin: 0px 0px;
+	height: 5%;
+}
+
+.success {
+	width: 100%; 
+	background-color: green; 
+	text-align: center; 
+	margin-top: 10px;
+}
+
+.error{
+	width: 100%; 
+	background-color: red; 
+	text-align: center; 
+	margin-top: 10px;
+}
+
+textarea{
+	height: 1%;
+	resize: none;
+}

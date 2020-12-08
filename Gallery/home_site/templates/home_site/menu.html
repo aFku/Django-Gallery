@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Amsterum - New Gallery</title>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/menu.css' %}">
+</head>
+<body>
+	<div class="flex">
+		<a class="reference" href="changepasswd/">
+			<div class="image">
+				<img src="{% static 'resc/settings.png' %}" alt="settings">
+			</div>
+			<div class="line" ></div>
+			<div class="label">
+				<p>Change password</p>
+			</div>
+		</a>
+		<a class="reference" href="add/">
+			<div class="image">
+				<img src="{% static 'resc/image.png' %}" alt="image">
+			</div>
+			<div class="line" ></div>
+			<div class="label">
+				<p>Add image</p>
+			</div>
+		</a>
+		<a class="reference" href="logout/">
+			<div class="image">
+				<img src="{% static 'resc/logout.png' %}" alt="image">
+			</div>
+			<div class="line"></div>
+			<div class="label">
+				<p>Logout</p>
+			</div>
+		</a>
+	</div>
+</body>
+</html>
