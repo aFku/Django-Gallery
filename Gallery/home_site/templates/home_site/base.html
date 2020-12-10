@@ -21,18 +21,22 @@
 				</li>
 			</ul>
 		</div>
-		<div class="nav-bar">
-			<ul>
-				<li class="header-nav-button" id="home"><a href="index.html">Home</a></li>
-				<li class="header-nav-button"><a href="">Gallery 1</a></li>
-				<li class="header-nav-button"><a href="">Gallery 2</a></li>
-				<li class="header-nav-button"><a href="">Gallery 3</a></li>
-			</ul>
+		<div class="topnav" id="myTopnav">
+		  <div class="dropdown">
+		    <button class="dropbtn">Dropdown
+		      <i class="fa fa-caret-down"></i>
+		    </button>
+		    <div class="dropdown-content">
+		      {% for gallery in galleries %}
+		      	<a href="#">{{ gallery.name }}</a>
+		      {% endfor %}
+		    </div>
+		  </div>
+		  <a href="#home" class="active">Home</a>
 		</div>
 	</header>
 	{% block content %}
 	{% endblock %}
 	
-
 </body>
 </html>

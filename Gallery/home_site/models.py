@@ -12,7 +12,7 @@ class Image(models.Model):
 	title = models.CharField(max_length=100, default='')
 	description = models.CharField(max_length=200, default='')
 	date = models.DateTimeField(default=timezone.now)
-	group = models.ForeignKey(GalleryGroup, on_delete=models.CASCADE, blank=False, null=False)
+	group = models.ForeignKey('GalleryGroup', on_delete=models.CASCADE, blank=False, null=False)
 
 	def get_name(self):
 		return self.image_path.url.split('/')[-1].split('.')[0]

@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
-from .models import Image
+from .models import Image, GalleryGroup
 from Scripts.grouper import grouper
 from random import choice, sample
 from django.core.paginator import Paginator
 from django.http import HttpResponseNotFound
-from .forms import UserForm, LoginForm, ImageForm
+from .forms import UserForm, LoginForm, ImageForm, GalleryForm
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
 
 def home_site_view(request):
 	images = Image.objects.all().order_by('-date')
+	galleries = GalleryGroup.objects.all()
 
 	p = Paginator(images, 5)
 	if request.GET.get('page'):
@@ -23,7 +25,7 @@ def home_site_view(request):
 		random_image = choice(images)
 	else:
 		random_image = None
-	return render(request, 'home_site/index.html', {'images_paginator':images_paginator, 'random_image': random_image})
+	return render(request, 'home_site/index.html', {'images_paginator':images_paginator, 'random_image': random_image, 'galleries': galleries})
 
 def gallery_view(request, number):
 	images = Image.objects.filter(group='group{}'.format(number)).order_by('-date')
@@ -107,3 +109,35 @@ def menu_view(request):
 		return render(request, 'home_site/menu.html')
 	else:
 		return redirect("/")
+
+def addgallery_view(request):
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			form = GalleryForm(request.POST)
+			title = form['name'].value()
+			if form.is_valid():
+				form.save()
+				messages.success(request, 'Gallery ' + title + ' added!')
+			else:
+				messages.error(request, 'Gallery ' + title + ' cannot be added! Check form.')
+		form = GalleryForm()
+		return render(request, 'home_site/addgroup.html', {'form': form})
+	else:
+		return redirect("/")
+
+def changepassword_view(request):
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			form = PasswordChangeForm(request.user, request.POST)
+			if form.is_valid():
+				user = form.save()
+				update_session_auth_hash(request, user)
+				messages.success(request, 'Password was changed!')
+			else:
+				messages.error(request, 'Password cannot be changed!')
+		form = PasswordChangeForm(request.user)
+		return render(request, 'home_site/changepassword.html', {'form': form})
+	else:
+		return redirect('/')
+
+

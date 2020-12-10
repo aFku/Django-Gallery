@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django import forms
-from .models import Image
+from .models import Image, GalleryGroup
 
 class UserForm(ModelForm):
 	class Meta:
@@ -26,3 +26,12 @@ class ImageForm(ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(ImageForm, self).__init__(*args, **kwargs)
 		self.fields['image_path'].required = False
+		groups = GalleryGroup.objects.all()
+		groups_name = [(group.id, group.name) for group in groups]
+		self.fields['group'].choices = groups_name
+
+class GalleryForm(ModelForm):
+	class Meta:
+		model = GalleryGroup
+		fields = ('name', 'description')
+		widgets = {"description": forms.Textarea(attrs={'rows': 5, 'cols':22})}
