@@ -4,7 +4,7 @@ from Scripts.grouper import grouper
 from random import choice, sample
 from django.core.paginator import Paginator
 from django.http import HttpResponseNotFound
-from .forms import UserForm, LoginForm, ImageForm, GalleryForm
+from .forms import UserForm, LoginForm, ImageForm, GalleryForm, ChooseGroupForm, EditImageForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
 from django.contrib import messages
@@ -35,7 +35,11 @@ def gallery_view(request, number):
 def preview_view(request, filename):
 	reg = '%{}.%'.format(filename)
 	image = Image.objects.extra(where=['image_path LIKE %s'], params=[reg])[0]
-	other_images = [Image.objects.filter(pk=index) for index in sample(range(Image.objects.count()), 4)]
+	images_count = Image.objects.count()
+	if images_count < 4:
+		other_images = [Image.objects.filter(pk=index) for index in sample(range(Image.objects.count()), images_count)]
+	else:
+		other_images = [Image.objects.filter(pk=index) for index in sample(range(Image.objects.count()), 4)]
 	if image:
 		return render(request, 'home_site/preview.html', {'image': image, 'other_images': other_images})
 	else:
@@ -139,5 +143,58 @@ def changepassword_view(request):
 		return render(request, 'home_site/changepassword.html', {'form': form})
 	else:
 		return redirect('/')
+
+def editgroup_choice_view(request):
+	if request.user.is_authenticated:
+		if request.method == "POST":
+			form = ChooseGroupForm(request.POST)
+			if form.is_valid():
+				group_name = form['gallery_choose'].value()
+				return redirect('/menu/editgroup/data/' + str(group_name))
+		form = ChooseGroupForm()
+		return render(request, 'home_site/groupedit_choice.html', {'form': form})
+	else:
+		return redirect('/')
+
+def editgroup_data_view(request, groupid):
+	if request.user.is_authenticated:
+		gallery = GalleryGroup.objects.get(id=groupid)
+		if request.method == "POST":
+			form = GalleryForm(request.POST, instance=gallery)
+			if form.is_valid():
+				form.save()
+				messages.success(request, 'Group was edited!')
+				return redirect('/menu/editgroup/choice')
+			else:
+				messages.error(request, 'Group cannot be changed!')
+		form = GalleryForm(instance=gallery)
+		return render(request, 'home_site/groupedit_data.html', {'form': form})
+	else:
+		return redirect('/')
+
+def editimage_view(request, filename):
+	if request.user.is_authenticated:
+		reg = '%{}.%'.format(filename)
+		image = Image.objects.extra(where=['image_path LIKE %s'], params=[reg])[0]
+		if request.method == "POST":
+			form = EditImageForm(request.POST, instance=image)
+			if form.is_valid():
+				form.save()
+				return redirect('/preview/' + filename)
+			else:
+				messages.error(request, 'Image cannot be changed!')
+		form = EditImageForm(instance=image)
+		return render(request, 'home_site/imageedit.html', {'form': form, 'title': image.title})
+	else:
+		return redirect('/')
+
+def deleteimage_view(request, filename):
+	if request.user.is_authenticated:
+		reg = '%{}.%'.format(filename)
+		image = Image.objects.extra(where=['image_path LIKE %s'], params=[reg])[0]
+		image.delete()
+	return redirect('/')
+	
+
 
 

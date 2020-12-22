@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-#import view
 
 #path('url', '<view name>', name=<''url name>)
 urlpatterns = [
@@ -15,4 +14,8 @@ urlpatterns = [
     path('menu/addgallery/', views.addgallery_view, name='addgallery_view'),
     path('menu/changepassword/', views.changepassword_view, name='changepassword_view'),
     path('menu/', views.menu_view, name='menu_view'),
+    path('menu/editgroup/choice', views.editgroup_choice_view, name='editgroup_choice_view'),
+    path('menu/editgroup/data/<int:groupid>', views.editgroup_data_view, name='editgroup_data_view'),
+    path('preview/<str:filename>/edit/', views.editimage_view, name='editimage_view'),
+    path('preview/<str:filename>/delete/', views.deleteimage_view, name='deleteimage_view'),
 ]
