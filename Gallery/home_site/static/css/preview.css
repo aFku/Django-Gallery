@@ -13,6 +13,19 @@ main.preview div.image{
 	width: 70%;
 }
 
+main.preview div.side{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      	width: 27%;
+	margin-left: 3%;
+	height: auto;
+	background-color: #F7D4AC;
+	border: solid 3px #FF8800;
+	border-radius: 40px;
+	box-shadow: -3px 4px 10px 3px #FFC685;
+}
+
 main.preview div.image img{
 	width: 100%;
 	max-width: 100%
@@ -23,13 +36,7 @@ main.preview div.image img{
 }
 
 main.preview div.info{
-	width: 27%;
-	margin-left: 3%;
-	height: auto;
-	background-color: #F7D4AC;
-	border: solid 3px #FF8800;
-	border-radius: 40px;
-	box-shadow: -3px 4px 10px 3px #FFC685;
+
 }
 
 main.preview div.info h1{
@@ -98,5 +105,34 @@ section.others li:hover{
 section.others li img{
 	width: 100%;
 	height: 100%;
+}
+
+div.side .utils-buttons{
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+div.side div.delete{
+    margin-left: 10%;
+    float: left;
+    width: 40%;
+}
+
+div.side div.edit{
+    margin-right: 10%;
+    float: right;
+    width: 40%;
+}
+
+div.side img {
+    width: 50%;
+}
+
+div.side div.edit a{
+    float: right
+}
+
+div.side div.edit img{
+    float: right
 }
 

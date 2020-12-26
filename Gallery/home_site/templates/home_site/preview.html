@@ -5,23 +5,34 @@
 	<div class="image">
 		<img src="{{ image.image_path.url}}">
 	</div>
-	<div class="info">
-		<h1>{{ image.title }}</h1>
-		<ul>
-			<li>
-				<a class="spec-type"><strong>Description:</strong></a>
-				<a class="spec-content">{{ image.description }}</a>
-			</li>
-			<li>
-				<a class="spec-type"><strong>Date:</strong></a>
-				<a class="spec-content">{{ image.date }}</a>
-			</li>
-			<li>
-				<a class="spec-type"><strong>Group:</strong></a>
-				<a class="spec-content">{{ image.group}}</a>
-			</li>
-		</ul>
-
+	<div class="side">
+		<div class="info">
+			<h1>{{ image.title }}</h1>
+			<ul>
+				<li>
+					<a class="spec-type"><strong>Description:</strong></a>
+					<a class="spec-content">{{ image.description }}</a>
+				</li>
+				<li>
+					<a class="spec-type"><strong>Date:</strong></a>
+					<a class="spec-content">{{ image.date }}</a>
+				</li>
+				<li>
+					<a class="spec-type"><strong>Group:</strong></a>
+					<a class="spec-content">{{ image.group.name }}</a>
+				</li>
+			</ul>
+		</div>
+		{% if user.is_authenticated %}
+		<div class="utils-buttons">
+			<div class="delete">
+				<a href="delete/"> <img src="/static/resc/image_delete.png"> </a>
+			</div>
+			<div class="edit">
+				<a href="edit/"> <img src="/static/resc/image_edit.png"> </a>
+			</div>
+		</div>
+		{% endif %}
 	</div>
 </main>
 <section class="others">

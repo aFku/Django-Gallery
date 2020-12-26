@@ -21,7 +21,7 @@ class Image(models.Model):
 		super().delete()
 		print(settings.MEDIA_URL)
 		print(settings.MEDIA_ROOT)
-		remove(settings.MEDIA_ROOT +  self.image_path.name)
+		remove(settings.MEDIA_ROOT + "/" + self.image_path.name)
 
 class GalleryGroup(models.Model):
 	name = models.CharField(max_length=20, default='')
