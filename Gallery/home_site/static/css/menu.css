@@ -1,3 +1,7 @@
+body{
+   min-width: 800px;
+}
+
 div.flex{
    display: flex;
    align-items: center;
@@ -9,7 +13,7 @@ a.reference{
 	width: 15%;
 	height: 40%;
 	border: solid 1px black;
-	margin: 0 5%;
+	margin: 0 2.5%;
 	display: block;
 	text-decoration: none;
 	color: black;

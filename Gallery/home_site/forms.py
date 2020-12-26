@@ -37,9 +37,15 @@ class GalleryForm(ModelForm):
 		widgets = {"description": forms.Textarea(attrs={'rows': 5, 'cols':22})}
 
 class ChooseGroupForm(forms.Form):
-	groups = GalleryGroup.objects.all()
-	groups_name = [(group.id, group.name) for group in groups]
-	gallery_choose = forms.CharField(label="Gallery", widget=forms.Select(choices=groups_name))
+	"""
+	Groups created in __init__ to allow migrations
+	"""
+	gallery_choose = forms.ChoiceField(label="Gallery", choices=(), required=True)
+
+	def __init__(self, *args, **kwargs):
+		super(ChooseGroupForm, self).__init__(*args, **kwargs)
+		self.fields['gallery_choose'].choices = [(group.id, group.name) for group in GalleryGroup.objects.all()]
+
 
 class EditImageForm(ImageForm):
 	def __init__(self, *args, **kwargs):

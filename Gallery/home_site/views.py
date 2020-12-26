@@ -49,10 +49,10 @@ def registry_view(request):
 	users_count = User.objects.filter(is_superuser=False).count()
 	if users_count == 0:
 		if request.method == "POST":
-			 form = UserForm(request.POST)
-			 if form.is_valid():
-			 	new_user = User.objects.create_user(**form.cleaned_data)
-			 	return home_site_view(request)
+			form = UserForm(request.POST)
+			if form.is_valid():
+				new_user = User.objects.create_user(**form.cleaned_data)
+				return redirect("/")
 		else:
 			form = UserForm()
 		return render(request, 'home_site/registry.html', {'form': form})
@@ -71,7 +71,7 @@ def login_view(request):
 			user = authenticate(request, username=username, password=password)
 			if user is not None:
 				login(request, user)
-				return redirect("/")
+				return redirect("/menu/")
 			else:
 				form = LoginForm()
 				messages.error(request, 'Wrong credentials!')
