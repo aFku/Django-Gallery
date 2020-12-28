@@ -28,11 +28,12 @@ def home_site_view(request):
 	return render(request, 'home_site/index.html', {'images_paginator': images_paginator, 'random_image': random_image, 'galleries': galleries})
 
 def gallery_view(request, number):
+	galleries = GalleryGroup.objects.all()
 	group = GalleryGroup.objects.filter(id=number)
 	images = Image.objects.filter(group=number).order_by('-date')
 	images_gallery = grouper(images, 3)
 	if group:
-		return render(request, 'home_site/gallery_view.html', {'images_gallery': images_gallery, 'gallery': group[0]})
+		return render(request, 'home_site/gallery_view.html', {'images_gallery': images_gallery, 'gallery': group[0], 'galleries': galleries})
 	else:
 		return HttpResponseNotFound('Gallery not found!')
 
@@ -40,13 +41,13 @@ def preview_view(request, filename):
 	reg = '%{}.%'.format(filename)
 	image = Image.objects.extra(where=['image_path LIKE %s'], params=[reg])[0]
 	images_count = Image.objects.count()
-	print(type(Image.objects.all()))
+	galleries = GalleryGroup.objects.all()
 	if images_count < 4:
 		other_images = Image.objects.order_by('?')[:images_count]
 	else:
 		other_images = Image.objects.order_by('?')[:4]
 	if image:
-		return render(request, 'home_site/preview.html', {'image': image, 'other_images': other_images})
+		return render(request, 'home_site/preview.html', {'image': image, 'other_images': other_images, 'galleries': galleries})
 	else:
 		return HttpResponseNotFound('Preview not found!')
 

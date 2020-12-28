@@ -23,17 +23,22 @@
 			</ul>
 		</div>
 		<div class="topnav" id="myTopnav">
-		  <div class="dropdown">
-		    <button class="dropbtn">Dropdown
-		      <i class="fa fa-caret-down"></i>
-		    </button>
-		    <div class="dropdown-content">
-		      {% for gallery in galleries %}
-		      	<a href="#">{{ gallery.name }}</a>
-		      {% endfor %}
-		    </div>
-		  </div>
-		  <a href="/" class="active">Home</a>
+			<div class="dropdown">
+				{% if user.is_authenticated %}
+					<button><a href="/menu/" class="single-button">Menu</a></button>
+				{% endif %}
+				<button><a href="/" class="single-button">Home</a></button>
+				<div class="galleries">
+					<button> Galleries </button>
+					<ul>
+						{% for gallery in galleries %}
+						<li>
+							<a href="/gallery/{{ gallery.id }}">{{ gallery.name}}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
 		</div>
 	</header>
 	{% block content %}
