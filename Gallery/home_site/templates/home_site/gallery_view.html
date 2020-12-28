@@ -1,0 +1,28 @@
+{% extends 'home_site/base.html' %}
+
+{% block content %}
+<div class="intro-container">
+		<article class="intro">
+			<h2>{{ gallery.name }}</h2>
+			<a> {{ gallery.description }}</a>
+		</article>
+	</div>
+	<div class="big-hr">
+		<hr>
+	</div>
+	<main>
+		<table class="gallery-table">
+			{% for images_line in images_gallery %}
+			<tr>
+				{% for image in images_line %}
+					{% if image %}
+						<td>
+							<a href="/preview/{{ image.get_name}}"><img src="{{ image.image_path.url }}"></a>
+						</td>
+					{% endif %}
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
+	</main>
+{% endblock %}

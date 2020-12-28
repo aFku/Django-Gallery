@@ -17,8 +17,8 @@ main.preview div.side{
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      	width: 27%;
-	margin-left: 3%;
+      	width: 33%;
+	margin-left: 1%;
 	height: auto;
 	background-color: #F7D4AC;
 	border: solid 3px #FF8800;
@@ -27,8 +27,8 @@ main.preview div.side{
 }
 
 main.preview div.image img{
-	width: 100%;
-	max-width: 100%
+	width: 80%;
+	max-width: 80%;
 	height: auto;
 	border: groove 3px black;
 	border-radius: 50px;
@@ -92,6 +92,7 @@ section.others li{
 	margin-right: 2%;
 	height: 250px;
 	transition-duration: 0.5s;
+	text-align: center;
 }
 
 section.others li:hover{
@@ -105,6 +106,12 @@ section.others li:hover{
 section.others li img{
 	width: 100%;
 	height: 100%;
+}
+
+section.others li a{
+	margin: 0 auto;
+	display: block;
+	width: 100%;
 }
 
 div.side .utils-buttons{

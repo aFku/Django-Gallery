@@ -25,12 +25,16 @@ def home_site_view(request):
 		random_image = choice(images)
 	else:
 		random_image = None
-	return render(request, 'home_site/index.html', {'images_paginator':images_paginator, 'random_image': random_image, 'galleries': galleries})
+	return render(request, 'home_site/index.html', {'images_paginator': images_paginator, 'random_image': random_image, 'galleries': galleries})
 
 def gallery_view(request, number):
-	images = Image.objects.filter(group='group{}'.format(number)).order_by('-date')
-	images_template = grouper(images, 3)
-	return render(request, 'home_site/index.html', {'images_template':images_template})
+	group = GalleryGroup.objects.filter(id=number)
+	images = Image.objects.filter(group=number).order_by('-date')
+	images_gallery = grouper(images, 3)
+	if group:
+		return render(request, 'home_site/gallery_view.html', {'images_gallery': images_gallery, 'gallery': group[0]})
+	else:
+		return HttpResponseNotFound('Gallery not found!')
 
 def preview_view(request, filename):
 	reg = '%{}.%'.format(filename)
