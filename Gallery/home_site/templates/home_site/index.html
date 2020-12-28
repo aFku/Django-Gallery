@@ -24,7 +24,7 @@
 					<p class="image-title"><strong>Title: </strong>{{ image.title }}</p>
 					<p class="image-description"><strong>Description: </strong>{{ image.description }}</p>
 					<p class="image-date"><strong>Date: </strong>{{ image.date }}</p>
-					<p class="image-group"><strong>Group: </strong>{{ image.group }}</p>
+					<p class="image-group"><strong>Group: </strong>{{ image.group.name }}</p>
 				</div>
 			</div>
 			<div class="small-hr">
@@ -67,7 +67,7 @@
 					<li><strong>Title: </strong>{{ random_image.title }}</li>
 					<li><strong>Description: </strong>{{ random_image.description }}</li>
 					<li><strong>Date: </strong>{{ random_image.date}}</li>
-					<li><strong>Group: </strong>{{ random_image.group }}</li>
+					<li><strong>Group: </strong>{{ random_image.group.name }}</li>
 				</ul>
 			</div>
 		</section>

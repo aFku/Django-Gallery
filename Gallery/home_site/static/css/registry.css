@@ -29,6 +29,7 @@ div.table{
 }
 div.logo{
 	display: inline-block;
+	margin-left: 5%;
 }
 
 div.utils{
@@ -61,4 +62,8 @@ h3 {
 textarea{
 	height: 1%;
 	resize: none;
+}
+
+#back {
+    margin-top: 5px;
 }

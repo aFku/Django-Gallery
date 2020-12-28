@@ -36,10 +36,11 @@ def preview_view(request, filename):
 	reg = '%{}.%'.format(filename)
 	image = Image.objects.extra(where=['image_path LIKE %s'], params=[reg])[0]
 	images_count = Image.objects.count()
+	print(type(Image.objects.all()))
 	if images_count < 4:
-		other_images = [Image.objects.filter(pk=index) for index in sample(range(Image.objects.count()), images_count)]
+		other_images = Image.objects.order_by('?')[:images_count]
 	else:
-		other_images = [Image.objects.filter(pk=index) for index in sample(range(Image.objects.count()), 4)]
+		other_images = Image.objects.order_by('?')[:4]
 	if image:
 		return render(request, 'home_site/preview.html', {'image': image, 'other_images': other_images})
 	else:

@@ -42,7 +42,7 @@
 	<ul>
 		{% for other in other_images %}
 		<li>
-			<a href="/preview/{{ other.0.get_name }}"><img src="{{ other.0.image_path.url }}"></a>
+			<a href="/preview/{{ other.get_name }}"><img src="{{ other.image_path.url }}"></a>
 		</li>
 		{% endfor %}
 	</ul>
