@@ -51,7 +51,7 @@ def preview_view(request, filename):
 	else:
 		return HttpResponseNotFound('Preview not found!')
 
-def registry_view(request):
+def register_view(request):
 	users_count = User.objects.filter(is_superuser=False).count()
 	if users_count == 0:
 		if request.method == "POST":
