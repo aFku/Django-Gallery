@@ -21,7 +21,7 @@ class ImageForm(ModelForm):
 		model = Image
 		fields = ('image_path', 'title', 'description', 'group',)
 		exclude = ['author',]
-		widgets = {"description": forms.Textarea(attrs={'rows': 5, 'cols':22})}
+		widgets = {"description": forms.Textarea(attrs={'rows': 5, 'cols': 22})}
 
 	def __init__(self, *args, **kwargs):
 		super(ImageForm, self).__init__(*args, **kwargs)
@@ -34,7 +34,7 @@ class GalleryForm(ModelForm):
 	class Meta:
 		model = GalleryGroup
 		fields = ('name', 'description')
-		widgets = {"description": forms.Textarea(attrs={'rows': 5, 'cols':22})}
+		widgets = {"description": forms.Textarea(attrs={'rows': 5, 'cols': 22})}
 
 class ChooseGroupForm(forms.Form):
 	"""

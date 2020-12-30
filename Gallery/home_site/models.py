@@ -5,6 +5,7 @@ from django.utils import timezone
 from os import remove, path
 from django.conf import settings
 
+
 class Image(models.Model):
 	author = models.ForeignKey('auth.User', on_delete=models.CASCADE, blank=False, null=True)
 	rename_path = RenamePath('Images') # Create object to rename image
@@ -19,9 +20,11 @@ class Image(models.Model):
 
 	def delete(self):
 		super().delete()
+		# Delete specific file from MEDIA
 		print(settings.MEDIA_URL)
 		print(settings.MEDIA_ROOT)
 		remove(settings.MEDIA_ROOT + "/" + self.image_path.name)
+
 
 class GalleryGroup(models.Model):
 	name = models.CharField(max_length=20, default='')
