@@ -19,8 +19,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
+"""
+Secret should be hidden on production. Use environment variable or other things to pass it here
+Example:
+import os
+SECRET_KEY = os.getenv('django-secret')
+"""
+SECRET_KEY = '_@@pudewn+)&ye-43o9hyijk9do(rwkx&oq#a3m=&fi4bocz=6'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', '*']
