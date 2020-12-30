@@ -48,4 +48,4 @@ If everything goes OK you should be redirected to the home page.
 If you check out *register_view* in *views.py* file you can see that this view will redirect to homne page you when database has more than 0 users. 
 This is mechanism prevent from creating another new users and allow only one administrator exists.
 
-<img src="https://github.com/aFku/Django-Gallery/blob/master/images/register.PNG" width="240" height="130">
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/register.PNG" width="240" height="130">
