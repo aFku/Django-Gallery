@@ -47,3 +47,5 @@ You can go to the register page with adress */register*. Type there your credent
 If everything goes OK you should be redirected to the home page. 
 If you check out *register_view* in *views.py* file you can see that this view will redirect to homne page you when database has more than 0 users. 
 This is mechanism prevent from creating another new users and allow only one administrator exists.
+
+![Register site screenshot] (https://github.com/aFku/Django-Gallery/blob/master/screens/register.PNG)
