@@ -35,10 +35,9 @@ To create schemas navigate to Gallery directory where *manage.py* is located. Th
 
 Now you can run server with command:
 
-`python manage.py runserver 0.0.0.0:8080 --insecure`
+`python manage.py runserver 0.0.0.0:8080`
 
-*--insecure* flag is required for static files, unless you put application behind static file server like apache or nginx. 
-You can also change DEBUG mode in *settings.py* to True for static files.
+App is running in DEBUG mode True, because it is easier way to handle static and media file. This means that you don't need any static file server like apache or nginx to check this app out.
 
 ## Create administrator account
 
@@ -48,4 +47,27 @@ If everything goes OK you should be redirected to the home page.
 If you check out *register_view* in *views.py* file you can see that this view will redirect to homne page you when database has more than 0 users. 
 This is mechanism prevent from creating another new users and allow only one administrator exists.
 
-![Register site screenshot] (https://github.com/aFku/Django-Gallery/blob/master/screens/register.PNG)
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/register.PNG" width="240" height="130">
+
+## Log in
+
+To log in go to the login page **/login** and type your credentials. Log in website is unavailable until you create a administrator account. After successful log in web app should redirect you to the menu (**/menu**). From the menu you can logout or change your password, add image, add new group of images called "gallery" and edit this groups. If you are not logged in and you will try to access menu, web app will redirect you to the home page.
+
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/login.PNG" width="240" height="130">
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/menu.PNG" width="240" height="130">
+
+## Add new gallery and image
+
+Let's add new gallery for our images. To do this you can use menu or address */menu/addgallery/*. You have to type there name of the gallery and description which will be displayed on a website. After that add new image to our gallery. Image have title, description and belongs to one of the galleries. When image is processed, web app changes its name with *RenamePath* class and *uuid4()* function.
+
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/addgallery.PNG" width="240" height="130">
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/addimage.PNG" width="240" height="130">
+
+## Preview
+
+## Gallery site
+
+## Home site
+
+
+
