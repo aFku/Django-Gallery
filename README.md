@@ -59,7 +59,7 @@ To log in go to the login page **/login** and type your credentials. Log in webs
 
 Let's add new gallery for our images. To do this you can use menu or address */menu/addgallery/*. You have to type there name of the gallery and description which will be displayed on a website. After that add new image to our gallery. Image have title, description and belongs to one of the galleries. When image is processed, web app changes its name with *RenamePath* class and *uuid4()* function.
 
-<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/addgallery.PNG" width="240" height="130"> <img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/addimage.PNG" width="240" height="130">
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/newgallery.PNG" width="240" height="130"> <img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/addimage.PNG" width="240" height="130">
 
 ## Preview
 
