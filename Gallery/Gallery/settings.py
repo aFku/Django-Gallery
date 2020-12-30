@@ -27,7 +27,8 @@ SECRET_KEY = os.getenv('django-secret')
 """
 SECRET_KEY = '_@@pudewn+)&ye-43o9hyijk9do(rwkx&oq#a3m=&fi4bocz=6'
 
-DEBUG = False
+#For static and media
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '*']
 
