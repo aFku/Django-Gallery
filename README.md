@@ -90,6 +90,6 @@ Home page is a simple overview of latest images. There is a paginator with five 
 
 Header contain logo and name on its left side. No the right side you can se navbar. It might contain two or three buttons, depending on whether the user is logged in. If user is not logged in you can find there only buttons "Home" and "Galleries" which are dropdown button. If you click it, list of all galleries will appear. When user is logged in you can find there one more button "Menu" which is reference to admin menu.
 
-<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/navbar_logut.PNG" width="240" height="130"><img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/navbar.PNG" width="240" height="130">
+<img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/homepage1.PNG" width="240" height="130"><img src="https://raw.githubusercontent.com/aFku/Django-Gallery/master/images/homepage_logout.PNG" width="240" height="130">
 
 
