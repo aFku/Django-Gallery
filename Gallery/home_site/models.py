@@ -21,8 +21,6 @@ class Image(models.Model):
 	def delete(self):
 		super().delete()
 		# Delete specific file from MEDIA
-		print(settings.MEDIA_URL)
-		print(settings.MEDIA_ROOT)
 		remove(settings.MEDIA_ROOT + "/" + self.image_path.name)
 
 
